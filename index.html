@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HTML Quiz Application</title>
+  <!-- SweetAlert2 CSS & JS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <div id="userTag" class="user-tag"></div>
+
+    <!-- SIGNUP VIEW -->
+    <div id="signupView" class="view active">
+      <h2>Create Account</h2>
+      <p style="text-align: center;">Sign up to start the HTML challenge</p>
+      <form id="signupForm">
+        <div class="form-group">
+          <label for="signupName">Name</label>
+          <input type="text" id="signupName" required placeholder="Enter full name" />
+        </div>
+        <div class="form-group">
+          <label for="signupEmail">Email</label>
+          <input type="email" id="signupEmail" required placeholder="Enter email address" />
+        </div>
+        <div class="form-group">
+          <label for="signupPassword">Password</label>
+          <input type="password" id="signupPassword" required placeholder="Choose a password" />
+        </div>
+        <button type="submit" class="btn">Sign Up</button>
+      </form>
+      <div class="switch-link">
+        Already registered? <a href="#" onclick="switchView('loginView')">Login Here</a>
+      </div>
+    </div>
+
+    <!-- LOGIN VIEW -->
+    <div id="loginView" class="view">
+      <h2>System Login</h2>
+      <p style="text-align: center;">Enter your credentials to access your account</p>
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="loginEmail">Email</label>
+          <input type="email" id="loginEmail" required placeholder="Enter your email" />
+        </div>
+        <div class="form-group">
+          <label for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" required placeholder="Enter your password" />
+        </div>
+        <button type="submit" class="btn">Login</button>
+      </form>
+      <div class="switch-link">
+        Need an account? <a href="#" onclick="switchView('signupView')">Sign Up Here</a>
+      </div>
+    </div>
+
+    <!-- QUIZ HOME VIEW -->
+    <div id="homeView" class="view">
+      <h1>HTML5 Quiz</h1>
+      <p style="text-align: center;">Test your HTML mastery with 30 MCQs</p>
+      
+      <div class="info-card">
+        <div class="info-item">
+          <span>Total Questions:</span>
+          <strong>30</strong>
+        </div>
+        <div class="info-item">
+          <span>Time per Question:</span>
+          <strong>30 Seconds</strong>
+        </div>
+        <div class="info-item">
+          <span>Passing Threshold:</span>
+          <strong>50% Score</strong>
+        </div>
+      </div>
+
+      <button id="startQuizBtn" class="btn">Start Quiz</button>
+      <div class="switch-link">
+        <a href="#" onclick="logout()">[ Logout ]</a>
+      </div>
+    </div>
+
+    <!-- QUIZ QUESTION VIEW -->
+    <div id="quizView" class="view">
+      <div class="quiz-header">
+        <span id="questionProgress" style="font-weight: 600; color: #f0f5f2;">Question 01 / 30</span>
+        <span id="timerBadge" class="timer-badge">Time Remaining: 30</span>
+      </div>
+
+      <div id="questionText" class="question-title">Loading Question...</div>
+
+      <div id="optionsContainer" class="options-container">
+        <!-- Options rendered dynamically -->
+      </div>
+
+      <button id="nextBtn" class="btn" disabled>Next Question</button>
+    </div>
+
+    <!-- RESULT VIEW -->
+    <div id="resultView" class="view">
+      <h1>🎉 Quiz Complete!</h1>
+      <p style="text-align: center;">You have finished the HTML Challenge.</p>
+
+      <div class="result-card">
+        <div style="color: #eef3f0; text-transform: uppercase; letter-spacing: 1px;">Your Final Score</div>
+        <div id="scoreDisplay" class="score-display">0 / 30</div>
+        <div id="percentageDisplay" class="percentage-display">Percentage: 0%</div>
+        <p id="feedbackText" style="margin-bottom: 0;">Keep Learning & Keep Coding!</p>
+      </div>
+
+      <button id="restartBtn" class="btn">Retake Quiz</button>
+      <div class="switch-link">
+        <a href="#" onclick="logout()">[ Logout ]</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
